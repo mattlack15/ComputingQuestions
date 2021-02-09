@@ -79,9 +79,9 @@ public class EscapeRoom {
 
                 int num = grid[i][j] = Integer.parseInt(nums[j]);
 
-                //I am using an IntList for better memory usage (int[] instead of Integer[])
+                //I am using an IntList for better memory usage (int[] instead of Integer[], 4 bytes vs 16 bytes)
                 //However you can use any list and it will be just fine
-                IntList list = numMap.computeIfAbsent(num, k -> new IntList());
+                IntList list = numMap.computeIfAbsent(num, k -> new IntList()); //If you're new to java, this line just puts a value (new IntList()) if one doesn't exist
 
                 //Add the target of the position on the grid
                 list.add((i + 1) * (j + 1));
