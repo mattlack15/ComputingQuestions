@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Q4 {
+public class CCC2021J4 {
 
     private static class IntList {
         public int[] arr = new int[2];
