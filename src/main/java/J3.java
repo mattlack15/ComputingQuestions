@@ -16,7 +16,7 @@ public class J3 {
         }
 
         // Find the top frequency.
-        int topFreq = 0;
+        int topFreq = 0; // EDIT: This is now the actual top frequency instead of (previously) the index of the top frequency.
         for (int i = 0; i < frequencies.length; i++) {
             if (frequencies[i] > topFreq) {
                 topFreq = frequencies[i];
