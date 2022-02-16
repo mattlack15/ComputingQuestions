@@ -16,7 +16,7 @@ public class EscapeRoom {
         public int end = 0;
 
         public void add(int num) {
-            if(end + 1 > arr.length) {
+            if (end + 1 > arr.length) {
                 resize(arr.length << 1);
             }
             arr[end++] = num;
@@ -45,7 +45,13 @@ public class EscapeRoom {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+
+/**
+ * Finds a path from the top left corner to the bottom right corner of a grid.
+ *
+ * @throws IOException If the input is invalid.
+ */
+public static void findPath() throws IOException {
 
         //So what I'm gonna do is go backwards, from the bottom right (which is where we need to get)
         //and look at the coordinates, multiply them together to get TARGET then look at where TARGET is
@@ -94,13 +100,13 @@ public class EscapeRoom {
         breadcrumb.prev = null;
 
         //While we have not made it to the starting line (0, 0) and we haven't run out of options
-        while(breadcrumb != null && breadcrumb.target != grid[0][0] && !numMap.isEmpty()) {
+        while (breadcrumb != null && breadcrumb.target != grid[0][0] && !numMap.isEmpty()) {
 
             //Get the possible next positions on the grid
             IntList possible = numMap.get(breadcrumb.target);
 
             //If we have no possible next positions, move back to the previous breadcrumb and try again
-            if(possible == null || possible.size() == 0) {
+            if (possible == null || possible.size() == 0) {
                 numMap.remove(breadcrumb.target); //The list is empty (or null), might as well remove it
                 breadcrumb = breadcrumb.prev;
                 continue;
@@ -124,7 +130,7 @@ public class EscapeRoom {
         reader.close();
 
         //If we've found a route, then breadcrumb will not be null
-        if(breadcrumb != null || rows == 1 && cols == 1) {
+        if (breadcrumb != null || rows == 1 && cols == 1) {
             System.out.println("yes");
         } else { //Else, we did not make it, it will have backtracked all the way until breadcrumb = null
             System.out.println("no");
