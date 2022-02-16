@@ -18,16 +18,16 @@ public class J3 {
         // Find the top frequency.
         int topFreq = 0;
         for (int i = 0; i < frequencies.length; i++) {
-            if (frequencies[i] > frequencies[topFreq]) {
-                topFreq = i;
+            if (frequencies[i] > topFreq) {
+                topFreq = frequencies[i];
             }
         }
 
         // Find the 2nd top frequency.
         int secondTopFreq = 0;
         for (int i = 0; i < frequencies.length; i++) {
-            if (frequencies[i] > frequencies[secondTopFreq] && i != topFreq) {
-                secondTopFreq = i;
+            if (frequencies[i] > secondTopFreq && frequencies[i] < topFreq) {
+                secondTopFreq = frequencies[i];
             }
         }
 
@@ -35,7 +35,7 @@ public class J3 {
 
         // Add the readings (indexes) that have the top frequency.
         for (int i = 0; i < frequencies.length; i++) {
-            if (frequencies[i] == frequencies[topFreq]) {
+            if (frequencies[i] == topFreq) {
                 topReadings.add(i);
             }
         }
@@ -44,7 +44,7 @@ public class J3 {
 
         // Add the readings (indexes) that have the 2nd top frequency.
         for (int i = 0; i < frequencies.length; i++) {
-            if (frequencies[i] == frequencies[secondTopFreq]) {
+            if (frequencies[i] == secondTopFreq) {
                 secondTopReadings.add(i);
             }
         }
